@@ -1,6 +1,6 @@
 [s1]
-192.168.57.4 ansible_user=s1
+192.168.57.4 ansible_user=s1 ansible_become_password="{{ s1_sudo }}"
 
 [s2]
-192.168.57.5 ansible_user=s2
+192.168.57.5 ansible_user=s2 ansible_become_password="{{ s2_sudo }}"
 
