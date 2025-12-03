@@ -1,6 +1,11 @@
-[s1]
+[web_servers]
+192.168.57.4 ansible_user=s1 ansible_become_password="{{ s1_sudo }}"
+
+[file_servers]
+192.168.57.4 ansible_user=s1 ansible_become_password="{{ s1_sudo }}"
+
+[db_servers]
 192.168.57.4 ansible_user=s1 ansible_become_password="{{ s1_sudo }}"
 
 [s2]
 192.168.57.5 ansible_user=s2 ansible_become_password="{{ s2_sudo }}"
-
