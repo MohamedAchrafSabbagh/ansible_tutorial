@@ -9,6 +9,7 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
+
 - hosts: web_servers
   become: true
   tasks:
@@ -21,6 +22,26 @@
       state: latest
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
+
+  - name: copying default html file for site
+    copy:
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+  - name: install unzip
+    package:
+      name: unzip
+
+  - name: install terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+      owner: root
+      group: root
 
 - hosts: db_servers
   become: true
